@@ -1,0 +1,19 @@
+input[type="checkbox"] {
+    transform: scale(4);
+    margin: 22px;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+  }
+
+.container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+p {
+    font-size: 28px;
+    padding: 5px;
+    font-weight: bold;
+  }
