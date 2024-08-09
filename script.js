@@ -1,18 +1,14 @@
-const { Client, Databases } = Appwrite;
+const { Client, Databases, Query } = Appwrite;
+const client = new Client();
+const databases = new Databases(client);
 
 let initArr = [];
-
-const client = new Client();
-
 const boxAmount = 9999;
+
 const databaseId = "66b629070003982f4ede";
 const collectionId = "66b6291f0007038bb23d";
 const projectId = "66b623af0029e5881737"
-
 client.setEndpoint("https://cloud.appwrite.io/v1").setProject(projectId); 
-
-const databases = new Databases(client);
-
 
 document.addEventListener("DOMContentLoaded", async function() {
 
@@ -28,13 +24,13 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     const result = await databases.listDocuments(
         databaseId,
-        collectionId
+        collectionId,
+        [Query.limit(100000000)]
     );
-    
+    console.log(result)
     for(let i = 0; i < result.documents.length; i++) {
         const id = result.documents[i].$id;
-        if(id < boxAmount)
-        {
+        if(id < boxAmount) {
             initArr[id] = true;
         }
     }
